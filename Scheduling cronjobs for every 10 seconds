@@ -1,0 +1,18 @@
+How to schedule cronjobs for every 10 seconds.
+A) cron only has a resolution of 1 minute. To resolve our issue we need 60 seconds / 10 seconds = 6 cron jobs, each with a sleep.
+
+E.g:- run crontab -e and add the following lines to your chosen editor:
+To elaborate on Sougata Bose's answer, I think the OP wants a command to be run every 10 seconds from a start time; not 10 seconds after the first minute and every subsequent minute.
+
+cron only has a resolution of 1 minute (there are other tools I think that may have finer resolutions but they are not standard on unix).
+
+Therefore, to resolve your issue you need 60 seconds / 10 seconds = 6 cron jobs, each with a sleep.
+
+e.g. run crontab -e and add the following lines to your chosen editor:
+
+* * * * * ( /usr/bin/wget http://api.us/application/ )  
+* * * * * ( sleep 10 ; /usr/bin/wget http://api.us/application/ )  
+* * * * * ( sleep 20 ; /usr/bin/wget http://api.us/application/ )  
+* * * * * ( sleep 30 ; /usr/bin/wget http://api.us/application/ )  
+* * * * * ( sleep 40 ; /usr/bin/wget http://api.us/application/ )  
+* * * * * ( sleep 50 ; /usr/bin/wget http://api.us/
