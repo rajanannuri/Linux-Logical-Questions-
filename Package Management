@@ -1,0 +1,9 @@
+# yum check-update
+# yum update
+# yum remove package_name
+#sudo rpm -ivh package_file.rpm
+#sudo yum downgrade package_name
+# yum clean all
+# yum repolist
+# yum install package name
+# sudo yum history -- it shows transaction id and when installed 
