@@ -11,6 +11,8 @@ Extension:-
 # pvcreate /dev/sde
 # vgextend /dev/sde /vg_name
 # lvextend -L +100G /dev/mapper/vg_name-lv_name or /dev/vg_name/lv_name
+# lvextend -L +10G /dev/vg_data/lv_name
 # xfs_growfs /data or path in above command 
+# xfs_growfs /dev/vg_data/lv_name
 # resize2fs same as above command # ext4
 
