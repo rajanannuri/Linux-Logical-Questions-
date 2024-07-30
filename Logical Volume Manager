@@ -1,5 +1,5 @@
 First we need to attach a hard disk,then use scan command to display or show disk.
-# echo "- - -" > /sys/class/scsi_host/host0 or 29 or 30/scan
+# echo "- - -" > /sys/class/scsi_host/host0 or 29 or 30/scan # ipan space adhi
 # pvcreate /dev/sde # disk name
 # vgcreate /dev/sde vg_name # create vg name
 # lvcreate -L +100G or +100M -n lv_name vg_name
