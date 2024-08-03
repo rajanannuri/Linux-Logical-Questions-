@@ -28,13 +28,28 @@ sudo systemctl set-default graphical.target
 # w or who -- who is connected/login in server
 # yum -- yellowdog updater modified 
 # rpm -- redhat package manager
+List Recent Transactions:
 # yum history - to list installed and updated packages 
+# yum --showduplicates list package_name
+# yum install package_name-version_number
+# yum info package_name
 # yum history info transactionid
 # yum history info transaction_id | grep 'Install' | wc -l
 # yum history info transaction_id | grep 'Update' | wc -l
+Roll Back Process 
+yum history 
+yum history info 45
+yum history undo 45
+yum info packagename
 
-# down drage 
+ Down Grade Package 
 # yum downgrade packagename-version
 # yum downgrade nginx-1.18.0-0.e17
 # apt list -a packagename -- To see available versions 
-apt install packagename=versionnumber
+# apt install packagename=versionnumber
+# apt-cache policy package
+# apt-mark hold package_name
+# apt show packagename
+# 
+
+
