@@ -71,7 +71,11 @@ Clean the yum cache and update the package list
 Verify that the EPEL repository is enabled
 # yum-config-manager --enable epel
 # yum repolist
-# 
+Manually Installing Package by using RPM
+# need to download package from url, that url from internet 
+wget url under /etc/yum.repos.d/
+# rpm -ivh package link or like http:
+
 
 
 
