@@ -1,2 +1,26 @@
 # ps aux
 # ps faux
+# pid 1 # systemd #/usr/lib/systemd/system 
+Modern Linux distributions use systemd instead of SysVinit. systemd uses the concept of "targets" instead of runlevels to define different states of the system. Target configurations are typically found in:
+/etc/systemd/system/
+/usr/lib/systemd/system/
+Some common targets include:
+
+poweroff.target - Equivalent to runlevel 0.
+rescue.target - Equivalent to runlevel 1.
+multi-user.target - Equivalent to runlevel 3.
+graphical.target - Equivalent to runlevel 5.
+reboot.target - Equivalent to runlevel 6.
+
+To check the default target in systemd, you can use the following command:
+
+systemctl get-default
+
+To set a different default target, use:
+
+systemctl set-default target_name
+
+
+For example, to set the graphical target as the default:
+
+sudo systemctl set-default graphical.target
