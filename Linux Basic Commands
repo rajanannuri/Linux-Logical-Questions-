@@ -26,4 +26,15 @@ For example, to set the graphical target as the default:
 sudo systemctl set-default graphical.target
 
 # w or who -- who is connected/login in server
+# yum -- yellowdog updater modified 
+# rpm -- redhat package manager
+# yum history - to list installed and updated packages 
+# yum history info transactionid
+# yum history info transaction_id | grep 'Install' | wc -l
+# yum history info transaction_id | grep 'Update' | wc -l
 
+# down drage 
+# yum downgrade packagename-version
+# yum downgrade nginx-1.18.0-0.e17
+# apt list -a packagename -- To see available versions 
+apt install packagename=versionnumber
