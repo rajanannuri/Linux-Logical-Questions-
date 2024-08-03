@@ -31,6 +31,7 @@ sudo systemctl set-default graphical.target
 # yum -- yellowdog updater modified 
 # rpm -- redhat package manager
 # yum remove packagename
+# 
 List Recent Transactions:
 # yum history - to list installed and updated packages 
 # yum --showduplicates list package_name
@@ -73,8 +74,24 @@ Verify that the EPEL repository is enabled
 # yum repolist
 Manually Installing Package by using RPM
 # need to download package from url, that url from internet 
-wget url under /etc/yum.repos.d/
-# rpm -ivh package link or like http:
+wget url under /etc/yum.repos.d
+# rpm -ivh package link or like http: - to install package 
+# rpm -qa | grep packagename - to know package installed or not
+# rpm -e package - to remove package 
+# rpm -Uvh package - to upgrade package 
+yum 
+# yum install package 
+# yum remove package 
+# yum list all - To list all packages available in the enabled repositories and installed on your system.
+# yum list installed - To list only the packages that are currently installed on your system
+# yum list available - To list packages that are available for installation in the enabled repositories but are not currently installed
+# yum list updates - To list packages that have updates available
+# yum list packagename - To list information about a specific package
+# yum update 
+
+# yum history 
+# yum history undo
+
 
 
 
