@@ -24,3 +24,6 @@ systemctl set-default target_name
 For example, to set the graphical target as the default:
 
 sudo systemctl set-default graphical.target
+
+# w or who -- who is connected/login in server
+
