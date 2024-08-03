@@ -1,7 +1,9 @@
 # ps aux
 # ps faux
 # pid 1 # systemd #/usr/lib/systemd/system 
-Modern Linux distributions use systemd instead of SysVinit. systemd uses the concept of "targets" instead of runlevels to define different states of the system. Target configurations are typically found in:
+Modern Linux distributions use systemd instead of SysVinit. 
+systemd uses the concept of "targets" instead of runlevels to define different states of the system. 
+Target configurations are typically found in:
 /etc/systemd/system/
 /usr/lib/systemd/system/
 Some common targets include:
@@ -28,6 +30,7 @@ sudo systemctl set-default graphical.target
 # w or who -- who is connected/login in server
 # yum -- yellowdog updater modified 
 # rpm -- redhat package manager
+# yum remove packagename
 List Recent Transactions:
 # yum history - to list installed and updated packages 
 # yum --showduplicates list package_name
@@ -50,6 +53,30 @@ yum info packagename
 # apt-cache policy package
 # apt-mark hold package_name
 # apt show packagename
+To install the EPEL (Extra Packages for Enterprise Linux) repository on CentOS
+# yum install epel-release --Install the EPEL repository
+# yum update. ---After installing the repository, update the package list
+# yum repolist -- Verify that the EPEL repository is enabled
+# If the epel-release package is not available or you prefer another method, 
+you can manually add the EPEL repository by downloading and installing the appropriate RPM package for your CentOS version. 
+Here are the steps:
+Download the EPEL release package using wget or curl
+# yum install wget -y
+# wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+Install the downloaded package
+# yum install epel-release-latest-7.noarch.rpm
+Clean the yum cache and update the package list
+# yum clean all
+# yum update
+Verify that the EPEL repository is enabled
+# yum-config-manager --enable epel
+# yum repolist
 # 
+
+
+
+
+
+
 
 
