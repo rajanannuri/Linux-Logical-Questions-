@@ -88,9 +88,18 @@ yum
 # yum list updates - To list packages that have updates available
 # yum list packagename - To list information about a specific package
 # yum update 
-
 # yum history 
 # yum history undo
+# ping ip or hostname - pocket information groper
+# dig - domain information groper
+# dig mx google.com - mail server records
+# dig ns google.com - name server records
+# dig hostname
+# traceroute ip - to check connectivity from our server to destination server 
+# tracert ip - in windows
+# telnet ip portnumber - for linux and windows 
+# curl -v telnet://ip:22 - linux and windows 
+
 
 
 
