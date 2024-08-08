@@ -112,6 +112,15 @@ CRONTAB:
 # vi crontab # if we write script in these file, it will not show under crontab -l
 # * * * * * user comand /home/output.txt or any path.
 eg: * * * * * root date >> /home/output.txt
+LOGS :
+# /var/log
+# less messages
+# more messages 
+# cat messages | head -n 10
+# cat messages | tail -n 10
+# tail -f messages - to read current logs
+# tail -n 10 /var/log/messages
+# tail -n 10 messages
 
 
 
