@@ -1,6 +1,7 @@
 # ssh -i .pem ec2-user@public ip
 # ssh ec2-user@public ip
-# ps aux
+# ps aux | grep process name
+# ps -ef | grep process name
 # ps faux
 # pid 1 # systemd #/usr/lib/systemd/system 
 Modern Linux distributions use systemd instead of SysVinit. 
