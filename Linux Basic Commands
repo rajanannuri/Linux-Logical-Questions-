@@ -113,6 +113,16 @@ CRONTAB:
 # * * * * * user comand /home/output.txt or any path.
 eg: * * * * * root date >> /home/output.txt
 LOGS :
+--+----+---------
+# To compress or giz logs files under /var, /var/log and /var/log/audit.
+# logs we cannot delete or remove, only need giz.
+# local messages we can do null --> cat /dev/null > localmessages
+# messages file have to move to /tmp ---> mv messages /tmp
+# /tmp we can gzip messages and we need to rename that messages.gz file to messages-date
+# And need to mv again to /var/log and restart rsyslog.service by using systemctl.
+-----------
+# /opt --- we can null or delete based based on file or if files related to application team, need confirmation to null or remove.
+# /root,/home based on files , need to take confirmation from application team.
 # /var/log
 # less messages
 # more messages 
