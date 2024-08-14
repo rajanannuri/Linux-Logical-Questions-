@@ -122,6 +122,15 @@ LOGS :
 # tail -n 10 /var/log/messages
 # tail -n 10 messages
 
+DPKG ERROR:
+------------------
+# we need to kill the apt-get process id
+# To know that dpkg error present or not, by using installation of any package 
+  ex:- apt install cracklib
+# Then it automatically show process id and need to kill that process.
+# After try to install package. or reconfigure dpkg.
+# dpkg --configure -a
+
 
 
 
