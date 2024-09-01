@@ -1,3 +1,5 @@
+# useradd username 
+# adduser username -- please check both differences
 # ssh -i .pem ec2-user@public ip
 # ssh ec2-user@public ip
 # ps aux | grep process name
