@@ -1,7 +1,7 @@
 First we need to attach a hard disk,then use scan command to display or show disk.
 # echo "- - -" > /sys/class/scsi_host/host0 or 29 or 30/scan # ipan space adhi
 # pvcreate /dev/sde # disk name
-# vgcreate /dev/sde vg_name # create vg name
+# vgcreate vg_name /dev/sde# create vg name
 # lvcreate -L +100G or +100M -n lv_name vg_name
 # mkfs.xfs /dev/vg_name/lv_name
 # mkfs.ext4 /dev/vg_name/lv_name
@@ -9,10 +9,11 @@ First we need to attach a hard disk,then use scan command to display or show dis
 
 Extension:-
 # pvcreate /dev/sde
-# vgextend /dev/sde /vg_name
+# vgextend /vg_name /dev/sde
 # lvextend -L +100G /dev/mapper/vg_name-lv_name or /dev/vg_name/lv_name
 # lvextend -L +10G /dev/vg_data/lv_name
 # xfs_growfs /data or path in above command 
+# xfs_growfs /dev/mapper/vg_appadata-lv_appadata
 # xfs_growfs /dev/vg_data/lv_name
 # resize2fs same as above command # ext4
 
