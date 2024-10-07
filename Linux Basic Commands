@@ -143,6 +143,11 @@ DPKG ERROR:
 # Then it automatically show process id and need to kill that process.
 # After try to install package. or reconfigure dpkg.
 # dpkg --configure -a
+# apt --fix-broken install 
+
+------------+++----
+# dmesg -D
+The dmesg -D command is used to disable the logging of kernel messages to the console. This means that while the kernel continues to log messages internally, they won't be displayed on the console/terminal.
 
 
 
