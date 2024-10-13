@@ -16,4 +16,5 @@ Extension:-
 # xfs_growfs /dev/mapper/vg_appadata-lv_appadata
 # xfs_growfs /dev/vg_data/lv_name
 # resize2fs same as above command # ext4
+# file -s /dev/sda  - to check disk is formatted with file system or not.
 
