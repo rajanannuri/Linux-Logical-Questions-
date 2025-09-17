@@ -1,0 +1,187 @@
+1)How to set username and password to never expiry.
+Ans:- For user account expiry: chage -E -1 rajasekhar
+     For Password never expiry for a user
+	 chage -M 99999 -I -1 rajasekhar
+	 we can do both at a time also
+	 chage -M 99999 -I -1 -E -1 rajasekhar
+	 Note : Please check password parametters
+	 
+	 -m : minimum password age
+	 -M : maximum password age
+	 -d : last time the password is changed
+	 -W : Password expiry warning
+	 -I password inactive -1
+	 -E : account expiry -1
+	 -1 : never expiry
+	 
+	 chage -l username ( To see password parametters)
+     chage username ( To modify password parametters)
+
+2)Why /etc/passwd and /etc/shadow file cannot mrged into a file.
+Ans:- Both files are designed for different purposes and cannot merged into a file.
+    a) /etc/passwd file keeps/stores user accounts information
+	b) /etc/passwd file read by all users in the server
+    a) /etc/shadow file keeps password hashes and security information
+	b) /etc/shadow file access/read by only root user.
+	
+3) How to list/how to see open files by particuler pid.
+Ans: lsof -p PID
+    Ex: lsof -p 1234
+	
+4) We are unable to umount a directory/file system, what are the reasons behind it.
+Ans:a) User present in the same directory/file 
+    b) Some/another users preset in the same directory/file
+	c) Files and directories used by one or more users within the mounted file sytem/directory.
+	    fuser -vm /path or /directory or /dev/disk
+	d) some of the files open in the directory, we can find by using below comand
+        lsof /path or /directory or /dev/disk
+        
+	e) After finding of procces, we required to kill them.
+	    kill -9 PID
+	f) We need to change the direcory.
+	    cd /
+	g) Disable the swapoff
+	    swapoff /swapfile or swapfile path
+	h) Then we can unmount the file system/directory
+	    umount -l /path or /directory or /dev/disk
+	i) fsck /dev/sda to check filesystem errors.
+	
+5)What could be the reason if server takes more time after reboot.
+Ans: File systems got correpted.
+
+6)We are trying to create a file under any disk or partition or directory, but we are getting permission denied. what could be the reason?. However no space issue and no permission issue.
+Ans: Running out of inods, then we need o check by using 
+     df -i      it shows which partition or mount point is full or free
+	 If there are any unwanted or unused files, we can remove or move to another server.
+7) How to check kernal routing table or routes information.
+Ans: a) route -n
+     b) ip r
+	 c) ip route 
+	 d) netstat -rn 
+	 
+8) How to set stricky bit and what is the difference between small s and capital S.
+Ans: 
+
+9) Which file is used to specify default gateway.
+Ans: cd /etc/sysconfig/network-scripts
+     ip r | grep head
+
+10) How to switch between run levels.
+Ans: In older operating systems we was used : System V init system or sysV:
+   1) Identify current run level by using below command
+   Ans) runlevel
+   The following are the run levels,
+   1) 0 :- HALT
+   2) 1 :- Single user mode
+   3) 2 :- Multi-user mode without networking
+   4) 3 :- Multi-user mode with networking
+   5) 4 :- Multi-user mode with graphical interface
+   6) 5 :- REBOOT
+ Example : How to switch to run level 3, we can use below command
+      init 3
+	  
+	New operating system services now using , Systemd Init System:
+	
+	Systemd init system:
+	
+	
+	1) For current runlevel command or changing the default runlevel
+	  systemctl get-default or
+	  systemctl default multi-user.target
+	The following are the runlevels,
+	1) poweroff.target  :- HALT
+	2) rescue.target    :- Single-user mode
+	3) multi-user.target :- Multi-usermode with networking
+	4) graphical.target :-  Multi-user mode with graphical interface
+	5) reboot.target  :- reboot.
+ Example : How to switch to multi-user mode with networking
+     systemctl isolate muti-user.target
+How to check available targets in the system
+    systemctl list-units --type=target
+	
+11) What is NFS, how to configure it and what is port number.
+Ans: Please check youtube videos.
+
+12) What is the Nice value and how to set nice value to a particular process.
+Ans: Nice value is used to set priority for a process and nice value symbol we can see like ni. it will find in top command.
+     
+	 1) -20 to 19 procesors arangement order
+	 2) nice -n -1 comand
+	 3) -1 is used for set and display process on top priority or display first
+Example : nice -n -1 pwd or nginx or maridb or java
+
+13) What is the difference between FTP and TFTP.
+Ans:- Please check on online
+
+14) How to extend mount point size/partition/filesystem.
+Ans: Please read LVM.
+
+15) How to rollback packages or package after patching.
+Ans:- Ubuntu or Debian:
+    1) To check package history
+    grep " upgrade " /var/log/dpkg.log
+	2) To rollback to previous version
+	apt-get install package=version
+	apt-get install apache2=2.4.29-1ubuntu4.14
+	
+	CentOs/Redhat: Here we need Transaction Id
+	1) To check package history or transatcion id
+     yum history
+    2) To rollback package by using trasaction id.
+	yum history undo trasactionid
+	yum history undo 45
+  How to exclude packages at the time of patching.
+    ubuntu/debian:
+	1) To hold package 
+	apt-mark hold package
+	2)To unhold 
+	apt-mark unhold package
+	and also  please check pin-priority
+	vi /etc/apt/preferences or cd /etc/apt/preferences.d/direcory
+	to check pin-prioritystatus
+	apt-cache policy packagename
+	
+    CentOs/Redhat:
+	To exclude package at the time of package
+	vi /etc/yum.configure
+	exclude=packagename
+	or
+	yum update --exclude=packagename1 --exclude=packagename2
+	
+	How to downgrade package.
+	Ubuntu:
+	apt-cache policy packagename
+	The above command was shows installed version and available versions from all repositories.
+	Down grade command:
+	After identification of version , we can down grade 
+	apt install package=version
+	CentOs/Redhat:
+	To check available versions of a package
+	yum list packagename --showduplicates
+	The above command will list all availableversions of package including the currently installed version also.
+	
+    Down grade command:
+	yum downgrade packagename-version
+	yum downgrade nginx-1.18.0-0.e17
+	
+16) What is rsync and syntax for rsync. and also see scp and differences between rsync and scp.
+
+rsync -rv -e ssh /directory ip:/root
+
+17) Hoe to reduce file system/partition/mount point in linux and file system/mount point reducation happen in online or not means in business hours or without downtime.
+Ans:-  #Check the size of lv/mount point by using df -hT
+       # unmount the lv/mount point using umount command
+	   #organaise the data in lv/mount point by using e2fsck command
+	   #e2fsck -f /dev/vgname/lvname
+	   #update the file system by using resize2fs command
+	   #resize2fs /dev/vgname/lvname
+	   #Now reduce the size by using below command
+	   #lvreduce -L -200M /dev/vgname/lvname
+	   # By using df -hT we can see the chages
+	   
+18) Which command shows system load average and uptime command shows load average of the system and we can see total 3 values of load average and is there any specific meaning for these values.
+Ans:- # It shows the load average of the system performance and workload.
+      # The 3 values as follows
+      #	Last 1 min, last 5 min, last 15 min
+      # For example load average is 1.05 .07 5.90
+      # Last 1 min the system was overloaded by 5%, because on an average of .05 process are waiting for 1.05 cpu
