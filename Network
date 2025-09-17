@@ -1,0 +1,78 @@
+ISP : internet service provider
+
+pub ip : unique ip adress over the globe ..
+
+pvt ip : unique within the network.
+
+ipv4 : 32 bit ; 2^32
+ipv6 : 128 bit ; 2^128
+
+ipv4 : 5 clases
+
+class a: 0.0.0.0 - 126.255.255.255(0-126) 
+
+b: 128.0.0.0 -191.255.255.255 (128-191)
+
+c: 192.0.0.0 - 223.255.255.255 (192-223)
+
+d: 224.0.0.0 -239.255.255.255 : broadcasting/multicasting purpose
+
+e: 240.0.0.0 - 255.255.255.255 : R&D
+
+127 : loopback ip/ local ip (127.0.0.1)
+
+pvt ip:
+
+a: 10.0.0.0 - 10.255.255.255 --pvt ip
+
+b: 172.16.0.0  - 172.31.255.255 --- pvt ip
+
+c: 192.168.0.0 - 192.168.255.255 /  -- pvt 
+
+a: N.H.H.H : 127 networks, each network supoorts 16M hosts
+
+b: N.N.H.H : 16,000 networks, each network supports 65000 hosts
+
+c: N.N.N.H : 2M networks, each network supports 256 hosts
+
+example :  
+
+0.0.0.1
+0.0.0.2
+0.0.0.255
+1.0.0.0
+
+0.0.1.0
+0.0.2.0
+
+1.0.0.1
+1.0.0.2
+....
+1.0.0.255
+1.0.1.0
+....
+1.0.1.255
+1.0.2.0
+....
+1.0.2.255
+
+1.(0-255).(0-255).(0-255)
+
+
+subnetting:
+
+/32 = 32-32=0 --- 2^0=0=1
+/31 = 32-31= 1 --- 2^1 = 2
+/30 = 32-30 =2 -- 2^2=4
+/29
+/28
+/27
+/26
+/8=32 -8 =24 =2^24=
+
+
+tcpdump -i any host ip -n -nn
+traceroute ip
+
+
+chown renderd:renderd /run/renderd
