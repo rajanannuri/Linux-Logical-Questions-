@@ -147,6 +147,9 @@ DPKG ERROR:
 
 ------------+++----
 # dmesg -D
+dmesg | tail -50
+journalctl -k -p err -n 50
+
 The dmesg -D command is used to disable the logging of kernel messages to the console. This means that while the kernel continues to log messages internally, they won't be displayed on the console/terminal.
 
 
