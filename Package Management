@@ -7,3 +7,68 @@
 # yum repolist
 # yum install package name
 # sudo yum history -- it shows transaction id and when installed 
+# Record current kernel version
+uname -r
+
+# Check OS release
+cat /etc/*release
+
+# List security advisories available (RHEL)
+yum updateinfo list security all
+dnf updateinfo list security all
+
+# Verify disk space
+df -h
+
+# Snapshot list of installed packages
+rpm -qa > /root/pkglist-$(date +%F).txt    # RHEL
+dpkg -l > /root/pkglist-$(date +%F).txt    # Debian/Ubuntu
+
+# Check important services status
+systemctl list-units --type=service --state=running
+yum clean all
+yum makecache fast
+yum check-update
+apt-get clean
+apt-get update
+apt list --upgradable
+# Only security updates
+yum update --security -y
+dnf update --security -y
+
+# All packages
+yum update -y
+dnf upgrade -y
+# Update specific packages
+apt-get install --only-upgrade packagename
+
+# Upgrade all upgradable packages
+apt-get upgrade -y
+
+# Full upgrade (may remove obsolete pkgs)
+apt-get full-upgrade -y
+uname -r                      # old kernel
+rpm -q kernel | tail -n 5     # RHEL
+dpkg --list | grep linux-image # Ubuntu/Debian
+rpm -qa --last | head -n 20      # RHEL
+apt list --upgradable            # Debian/Ubuntu
+systemctl status sshd
+systemctl status httpd
+systemctl status nginx
+uname -r
+yum history list
+yum history info <ID>
+yum history undo <ID>
+apt-get install pkg=version
+####
+Summary of key commands by phase:
+
+Pre-checks: uname -r, df -h, rpm -qa / dpkg -l
+
+Repo update: yum makecache / apt-get update
+
+Apply patches: yum update --security -y / apt-get upgrade -y
+
+Verify: rpm -qa --last, systemctl status, uname -r
+
+Rollback: yum history undo / apt-get install pkg=version
