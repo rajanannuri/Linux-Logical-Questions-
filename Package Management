@@ -80,3 +80,7 @@ Apply patches: yum update --security -y / apt-get upgrade -y
 Verify: rpm -qa --last, systemctl status, uname -r
 
 Rollback: yum history undo / apt-get install pkg=version
+
+grep " install " /var/log/apt/history.log      # Installed packages
+grep " remove " /var/log/apt/history.log       # Removed packages
+grep " upgrade " /var/log/apt/history.log      # Upgraded packages
