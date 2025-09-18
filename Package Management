@@ -9,6 +9,14 @@
 # sudo yum history -- it shows transaction id and when installed 
 # Record current kernel version
 uname -r
+yum history list        # Show transaction history
+yum history info <ID>   # Show details of a transaction
+yum history undo <ID>   # Undo a specific transaction
+yum history redo <ID>   # Redo a past transaction
+yum history summary     # Show summary of transactions
+yum history package <pkg> # Show history for a package
+yum history stats       # Show statistics about transactions
+yum history rollback <ID> # Rollback to a specific transaction
 
 # Check OS release
 cat /etc/*release
