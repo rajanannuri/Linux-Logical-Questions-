@@ -12,6 +12,27 @@ Target configurations are typically found in:
 /etc/systemd/system/
 /usr/lib/systemd/system/
 Some common targets include:
+# Booting process 
+from boot -> grub -> vmlinuz -> initramfs -> rootfs -> systemd.
+# how to boot a server, have a vmlinuz not found or initramfs missing or 
+corrupted or kernal panic error 
+1. load old kernal if it is available or
+2. if kernal is available and it is corrupted.
+boot in to normal mode, rescue/single-user mode, or from a Live CD rescue environment,
+dracut -f initramfs ----.img initramfs 
+reboot 
+another method:
+if we need to old a old kernal, we need to modify under below paths.
+centos:
+/etc/default/grub
+default_grub=0 or 1 or 2
+grub2-mkconfig -o /boot/grub2/grub.cfg
+reboot 
+ubuntu:
+/etc/default/grub
+default_grub=0 or 1 or 2
+grub-mkconfig -o /boot/grub/grub.cfg
+reboot 
 
 poweroff.target - Equivalent to runlevel 0.
 rescue.target - Equivalent to runlevel 1.
