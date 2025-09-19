@@ -1,4 +1,6 @@
 # dnf = dandified yum
+yum list installed <package_name> # show package version 
+apt list --installed | grep <package_name>
 # yum check-update
 # yum update
 # yum remove package_name
