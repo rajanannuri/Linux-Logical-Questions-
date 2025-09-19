@@ -1,3 +1,4 @@
+# dnf = dandified yum
 # yum check-update
 # yum update
 # yum remove package_name
