@@ -19,7 +19,10 @@ corrupted or kernal panic error
 1. load old kernal if it is available or
 2. if kernal is available and it is corrupted.
 boot in to normal mode, rescue/single-user mode, or from a Live CD rescue environment,
+centos:
 dracut -f initramfs ----.img initramfs 
+ubuntu:
+update-initramfs -c -k all
 reboot 
 another method:
 if we need to old a old kernal, we need to modify under below paths.
@@ -28,6 +31,10 @@ centos:
 default_grub=0 or 1 or 2
 grub2-mkconfig -o /boot/grub2/grub.cfg
 reboot 
+grub2-set-default 1 or 0 or 2
+vi /boot/grub2/grubenv
+save_entry= 1 or
+grub2-mkconfig -o /boot/grub2/grub.cfg
 ubuntu:
 /etc/default/grub
 default_grub=0 or 1 or 2
