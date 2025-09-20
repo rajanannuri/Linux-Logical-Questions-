@@ -6,6 +6,15 @@ First we need to attach a hard disk,then use scan command to display or show dis
 # mkfs.xfs /dev/vg_name/lv_name
 # mkfs.ext4 /dev/vg_name/lv_name
 # mount /data or /dev/vg_name/lv_name /data
+lvcreate -l 100%FREE -n data_lv my_vg
+lvextend -l +100%FREE /dev/my_vg/my_lv1
+/dev/my_vg/my_lv1   /data1   ext4   defaults   0 0
+
+Resize filesystem:
+ext4:
+resize2fs /dev/my_vg/my_lv1
+xfs:
+xfs_growfs 
 
 Extension:-
 # pvcreate /dev/sde
@@ -18,3 +27,34 @@ Extension:-
 # resize2fs same as above command # ext4
 # file -s /dev/sda  - to check disk is formatted with file system or not.
 
+Reduce LV (Careful ⚠️ – Data Risk!)
+Data loss risk if steps are skipped, so always take backup first.
+# Unmount the LV:
+umount /data1
+# Run filesystem check:
+e2fsck -f /dev/my_vg/my_lv1
+#Resize filesystem to new smaller size
+resize2fs /dev/my_vg/my_lv1 5G
+# Reduce the LV size:
+lvreduce -L 5G /dev/my_vg/my_lv1
+# Mount back:
+mount /dev/my_vg/my_lv1 /data1
+### Reduce LV – xfs: ###
+Direct shrinking is not supported.
+👉 Workaround = create a new smaller LV, copy data, then remove old LV.
+# Create new smaller LV:
+lvcreate -L 5G -n new_lv my_vg
+mkfs.xfs /dev/my_vg/new_lv
+mkdir /newdata
+mount /dev/my_vg/new_lv /newdata
+# Copy data from old LV:
+rsync -avx /data1/ /newdata/
+# Unmount and remove old LV:
+umount /data1
+lvremove /dev/my_vg/my_lv1
+# Rename new LV to old name (optional):
+lvrename my_vg new_lv my_lv1
+# Update /etc/fstab if needed, then remount.
+Summary:
+ext4 → Can shrink safely using resize2fs + lvreduce.
+xfs → Cannot shrink → must migrate data to a new smaller LV.
