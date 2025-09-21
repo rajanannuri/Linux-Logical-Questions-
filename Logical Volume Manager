@@ -69,3 +69,22 @@ Wrong admin action (rm -rf, mkfs, lvremove, vgremove, etc.)
 
 👉 The physical disk still holds bits, but without correct metadata and mappings, 
 or after overwrites, recovery becomes limited.
+######
+Why data loss happens even though data is on disk:
+## Filesystem Metadata Corruption
+The data (files) is in blocks, but you need metadata (inode, superblock, journal, etc.) to locate and interpret it.
+If metadata is corrupted (e.g., by power failure, crash, fsck gone wrong), the files exist but the system can’t “map” to them.
+## Overwriting Blocks
+If you overwrite a file (write new data on the same blocks), the old data is lost.
+Example: editing a file and saving → old contents replaced in the same disk blocks.
+### LVM Metadata Issues
+LVM maintains its own metadata (VG, LV, PV info).
+If that gets corrupted/deleted, the OS won’t know how logical volumes map to physical extents → data becomes inaccessible even though it’s still there.
+## Disk Failures (Bad Sectors / Head Crash)
+Physical disk errors (bad sectors, platter issues, SSD wear) → unreadable blocks.
+Partial corruption spreads if ignored
+### Accidental Deletion / Formatting
+When you delete a file, only its pointer is removed from metadata — actual data blocks may remain until overwritten.
+That’s why recovery tools (extundelete, photorec, testdisk) can often recover deleted files.
+##RAID / Multi-disk setups (with LVM on top)
+If one disk fails in a non-redundant setup (RAID 0, or single PV LVM without backup), its missing chunks mean partial or total data loss.
