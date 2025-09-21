@@ -58,3 +58,14 @@ lvrename my_vg new_lv my_lv1
 Summary:
 ext4 → Can shrink safely using resize2fs + lvreduce.
 xfs → Cannot shrink → must migrate data to a new smaller LV.
+Data is lost when:
+Metadata (LVM or FS) gets corrupted
+
+Blocks get overwritten (new writes replace old data)
+
+Disk physically fails (bad sectors, head crash, SSD wear)
+
+Wrong admin action (rm -rf, mkfs, lvremove, vgremove, etc.)
+
+👉 The physical disk still holds bits, but without correct metadata and mappings, 
+or after overwrites, recovery becomes limited.
