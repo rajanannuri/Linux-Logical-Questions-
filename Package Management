@@ -26,8 +26,10 @@ yum history rollback <ID> # Rollback to a specific transaction
 cat /etc/*release
 
 # List security advisories available (RHEL)
-yum updateinfo list security all
-dnf updateinfo list security all
+# yum updateinfo list security all
+# dnf updateinfo list security all
+# yum update --security -y
+# dnf update --security -y
 
 # Verify disk space
 df -h
