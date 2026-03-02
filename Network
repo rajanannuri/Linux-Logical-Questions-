@@ -77,3 +77,11 @@ tcpdump -i any dst host 192.168.1.10 -nn  -- Only capture outgoing traffic to an
 traceroute ip   --- to verify whether the traffic is going to destination or not from Src.
 
 chown renderd:renderd /run/renderd
+
+nslookup example.com ( Domain to IP)   --- helps to find:
+* IP address of a domain, * Domain name of an IP address (reverse lookup), * DNS records (MX, NS, TXT, etc.)
+* Which DNS server is responding
+🔹 Reverse lookup (IP → domain)
+nslookup 8.8.8.8
+# 
+
