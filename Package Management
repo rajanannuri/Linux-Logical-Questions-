@@ -1,6 +1,7 @@
 # dnf = dandified yum
 yum list installed <package_name> # show package version 
 apt list --installed | grep <package_name>
+# # yum install epel-release --Install the EPEL repository.... It provides additional packages not included in default RHEL/CentOS repos.
 # yum check-update
 # yum update
 # yum remove package_name
