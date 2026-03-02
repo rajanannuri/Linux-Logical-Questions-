@@ -35,10 +35,10 @@ df -h
 rpm -qa > /root/pkglist-$(date +%F).txt    # RHEL
 dpkg -l > /root/pkglist-$(date +%F).txt    # Debian/Ubuntu
 
-# Check important services status
+# Check important services status #
 systemctl list-units --type=service --state=running
-yum clean all
-yum makecache fast
+yum clean all  --- 
+yum makecache fast  ---  * Connects to enabled repositories, * Downloads the latest metadata, * Stores it in /var/cache/yum, Speeds up future install/search/update operations
 yum check-update
 apt-get clean
 apt-get update
@@ -49,7 +49,11 @@ dnf update --security -y
 
 # All packages
 yum update -y
-dnf upgrade -y
+yum upgrade 
+yum upgrade httpd
+yum upgrade --exclude=kernel*
+yum check-update
+dnf upgrade -y ( Rhel 8 and CentOs 8)
 # Update specific packages
 apt-get install --only-upgrade packagename
 
