@@ -4,7 +4,7 @@ apt list --installed | grep <package_name>
 # # yum install epel-release --Install the EPEL repository.... It provides additional packages not included in default RHEL/CentOS repos.
 # yum check-update
 # yum update
-# yum remove package_name
+ **** # yum remove package_name
 #sudo rpm -ivh package_file.rpm
 #sudo yum downgrade package_name
 # yum clean all
@@ -13,23 +13,23 @@ apt list --installed | grep <package_name>
 # sudo yum history -- it shows transaction id and when installed 
 # Record current kernel version
 uname -r
-yum history list        # Show transaction history
+  ***  yum history list        # Show transaction history
 yum history info <ID>   # Show details of a transaction
 yum history undo <ID>   # Undo a specific transaction
 yum history redo <ID>   # Redo a past transaction
 yum history summary     # Show summary of transactions
 yum history package <pkg> # Show history for a package
 yum history stats       # Show statistics about transactions
-yum history rollback <ID> # Rollback to a specific transaction
+ ** yum history rollback <ID> # Rollback to a specific transaction
 
 # Check OS release
 cat /etc/*release
 
 # List security advisories available (RHEL)
-# yum updateinfo list security all
-# dnf updateinfo list security all
-# yum update --security -y
-# dnf update --security -y
+**** # yum updateinfo list security all
+**** # dnf updateinfo list security all
+**** # yum update --security -y
+**** # dnf update --security -y
 
 # Verify disk space
 df -h
@@ -47,14 +47,14 @@ apt-get clean
 apt-get update
 apt list --upgradable
 # Only security updates
-yum update --security -y
+**** yum update --security -y
 dnf update --security -y
 
 # All packages
 yum update -y
-yum upgrade 
-yum upgrade httpd
-yum upgrade --exclude=kernel*
+**** yum upgrade 
+**** yum upgrade httpd
+**** upgrade --exclude=kernel*
 yum check-update
 dnf upgrade -y ( Rhel 8 and CentOs 8)
 # Update specific packages
@@ -68,20 +68,22 @@ apt-get full-upgrade -y
 uname -r                      # old kernel
 rpm -q kernel | tail -n 5     # RHEL
 dpkg --list | grep linux-image # Ubuntu/Debian
-rpm -qa --last | head -n 20      # RHEL
+**** rpm -qa --last | head -n 20      # RHEL
 apt list --upgradable            # Debian/Ubuntu
 systemctl status sshd
 systemctl status httpd
 systemctl status nginx
 uname -r
-yum history list
+**** yum history list
 yum history info <ID>
 yum history undo <ID>
 apt-get install pkg=version
+***** apt update
+***** apt upgrade
 ####
 Summary of key commands by phase:
 
-Pre-checks: uname -r, df -h, rpm -qa / dpkg -l
+***** Pre-checks: uname -r, df -h, rpm -qa / dpkg -l
 
 Repo update: yum makecache / apt-get update
 
@@ -89,7 +91,7 @@ Apply patches: yum update --security -y / apt-get upgrade -y
 
 Verify: rpm -qa --last, systemctl status, uname -r
 
-Rollback: yum history undo / apt-get install pkg=version
+*****  Rollback: yum history undo / apt-get install pkg=version
 
 grep " install " /var/log/apt/history.log      # Installed packages
 grep " remove " /var/log/apt/history.log       # Removed packages
