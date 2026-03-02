@@ -71,8 +71,9 @@ subnetting:
 /8=32 -8 =24 =2^24=
 
 
-tcpdump -i any host ip -n -nn
-traceroute ip
-
+tcpdump -i any host ip -n -nn  --- Captures all traffic going to or coming from 192.168.1.10 on any interface, showing raw IPs and port numbers.
+tcpdump -i any src host 192.168.1.10 -nn  --- Only capture incoming traffic from an IP:
+tcpdump -i any dst host 192.168.1.10 -nn  -- Only capture outgoing traffic to an IP:
+traceroute ip   --- to verify whether the traffic is going to destination or not from Src.
 
 chown renderd:renderd /run/renderd
