@@ -89,7 +89,7 @@ yum info packagename
 # apt-mark hold package_name
 # apt show packagename
 To install the EPEL (Extra Packages for Enterprise Linux) repository on CentOS
-# yum install epel-release --Install the EPEL repository
+# yum install epel-release --Install the EPEL repository.... It provides additional packages not included in default RHEL/CentOS repos.
 # yum update. ---After installing the repository, update the package list
 # yum repolist -- Verify that the EPEL repository is enabled
 # If the epel-release package is not available or you prefer another method, 
